@@ -3,16 +3,13 @@ def finder(files, queries):
     hash_tbl = {}
         
     for file in files:
-        # parts = file.split('/')[-1]
-        parts = file.split('/')
-        #remove empty space
-        parts.pop(0)
-        
-        for part in parts:
-            if part in hash_tbl:
-                hash_tbl[part].append(file)
-            else:
-                hash_tbl[part] = [file]
+        #only need last item in path name
+        part = file.split('/')[-1]
+
+        if part in hash_tbl:
+            hash_tbl[part].append(file)
+        else:
+            hash_tbl[part] = [file]
     
     file_queries = []
     
