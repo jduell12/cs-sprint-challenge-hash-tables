@@ -16,6 +16,8 @@ def reconstruct_trip(tickets, length):
     
     itinerary.insert(0, flights['NONE'])
     
+    #tests want 'NONE' to be the last item in the list - if only wanted the flights like in the README it would be
+    # for i in range(length-2):
     for i in range(length-1):
         itinerary.append(flights[itinerary[i]])
     
