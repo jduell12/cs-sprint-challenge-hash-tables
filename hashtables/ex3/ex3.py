@@ -8,7 +8,7 @@ def intersection(arrays):
             freq[num] += 1
     
 
-    return [key for key, value in freq.items() if value == len(arrays)]
+    return [key for key in freq if freq[key] == len(arrays)]
 
 
 
