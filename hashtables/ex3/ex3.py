@@ -7,18 +7,8 @@ def intersection(arrays):
                 freq[num] = 0
             freq[num] += 1
     
-    freq_list = list(freq.items())
-    freq_list.sort(key=lambda t:t[1], reverse=True)
-    
-    iter = []
-    
-    for i in range(len(freq_list)):
-        if freq_list[i][1] == len(arrays):
-            iter.append(freq_list[i][0])
-        else:
-            break
-    
-    return iter
+
+    return [key for key, value in freq.items() if value == len(arrays)]
 
 
 
