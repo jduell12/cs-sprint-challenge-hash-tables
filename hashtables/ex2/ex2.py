@@ -9,29 +9,16 @@ class Ticket:
 
 def reconstruct_trip(tickets, length):
     itinerary = []
-    middle = {}
+    flights = {}
     
     for ticket in tickets:
-        if ticket.source == "NONE":
-            itinerary.insert(0, ticket.destination)
-        elif ticket.destination == "NONE":
-            itinerary.insert(length-1, ticket.source) 
-        else:
-            pass
+        flights[ticket.source] = ticket.destination
+    
+    itinerary.insert(0, flights['NONE'])
+    
+    for i in range(length-1):
+        itinerary.append(flights[itinerary[i]])
+    
     return itinerary
 
-tickets = [
-    Ticket("PIT",  "ORD" ),
-    Ticket("XNA", "CID" ),
-    Ticket( "SFO",  "BHM" ),
-    Ticket( "FLG",  "XNA" ),
-    Ticket("NONE",  "LAX" ),
-    Ticket ("LAX",  "SFO" ),
-    Ticket ("CID",  "SLC" ),
-    Ticket ("ORD",  "NONE" ),
-    Ticket("SLC",  "PIT" ),
-    Ticket("BHM",  "FLG" )
-]
-print(reconstruct_trip(tickets, len(tickets)))
 
-# expected = ["PDX", "DCA", "NONE"]
