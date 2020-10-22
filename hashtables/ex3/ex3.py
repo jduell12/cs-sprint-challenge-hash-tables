@@ -1,10 +1,15 @@
 def intersection(arrays):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    freq = {}
+    
+    for array in arrays:
+        for num in array:
+            if num not in freq:
+                freq[num] = 0
+            freq[num] += 1
+    
 
-    return result
+    return [key for key in freq if freq[key] == len(arrays)]
+
 
 
 if __name__ == "__main__":

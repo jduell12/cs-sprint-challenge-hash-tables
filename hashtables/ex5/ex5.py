@@ -1,14 +1,23 @@
-# Your code here
-
-
 
 def finder(files, queries):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    hash_tbl = {}
+        
+    for file in files:
+        #only need last item in path name
+        part = file.split('/')[-1]
 
-    return result
+        if part in hash_tbl:
+            hash_tbl[part].append(file)
+        else:
+            hash_tbl[part] = [file]
+    
+    file_queries = []
+    
+    for query in queries:
+        if query in hash_tbl:
+            file_queries += hash_tbl[query]
+
+    return file_queries
 
 
 if __name__ == "__main__":
